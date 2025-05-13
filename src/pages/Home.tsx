@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
+import GameList from '../components/GameList/GameList';
+import { client } from '../rawg/client.gen';
+import styles from './Home.module.css';
+
+
 export default function Home() {
   return (
-    <div>
-      <h1> Hello World! </h1>
-    </div>
+    <GameList title="Trending Games" pageSize={12} />
   );
 }

@@ -1,0 +1,55 @@
+.container {
+  padding: 20px;
+  width: 100%;
+}
+
+.heading {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #b3b3b3;
+}
+
+.error {
+  color: #ff6b6b;
+  text-align: center;
+  padding: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.pageButton {
+  padding: 8px 16px;
+  border: none;
+  background-color: #4a4a4a;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pageButton:hover {
+  background-color: #5e5e5e;
+}
+
+.pageButton:disabled {
+  background-color: #333333;
+  cursor: not-allowed;
+}
