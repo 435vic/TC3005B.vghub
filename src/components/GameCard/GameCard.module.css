@@ -13,6 +13,14 @@
   transform: translateY(-5px);
 }
 
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
 .imageContainer {
   position: relative;
   width: 100%;

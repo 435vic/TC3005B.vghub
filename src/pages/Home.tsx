@@ -6,6 +6,6 @@ import styles from './Home.module.css';
 
 export default function Home() {
   return (
-    <GameList title="Trending Games" pageSize={12} />
+    <GameList title="Trending Games" />
   );
 }

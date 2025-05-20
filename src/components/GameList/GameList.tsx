@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { GameReadable } from '../../rawg/types.gen';
+import type { GameReadable, GamesListData } from '../../rawg/types.gen';
 import GameCard from '../GameCard/GameCard';
 import styles from './GameList.module.css';
 import { gamesList } from '../../rawg';
@@ -8,9 +8,10 @@ import client from '../../rawg/client';
 type GameListProps = {
   title?: string;
   pageSize?: number;
+  query?: GamesListData["query"]
 };
 
-export default function GameList({ title = 'Popular Games', pageSize = 12 }: GameListProps) {
+export default function GameList({ title = 'Popular Games', pageSize = 24, query}: GameListProps) {
   const [games, setGames] = useState<GameReadable[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -23,14 +24,18 @@ export default function GameList({ title = 'Popular Games', pageSize = 12 }: Gam
         setLoading(true);
         setError(null);
         
+        const finalQuery = query 
+          ? { ...query, page, page_size: pageSize }
+          : {
+              page_size: pageSize,
+              dates: '2025-01-01,2025-05-09',
+              ordering: '-rating',
+              page,
+            };
+            
         const response = await gamesList({
           client,
-          query: {
-            page_size: pageSize,
-            dates: '2025-01-01,2025-05-09',
-            ordering: '-rating',
-            page,
-          },
+          query: finalQuery
         });
         
         setGames(response.data!.results);
@@ -44,7 +49,7 @@ export default function GameList({ title = 'Popular Games', pageSize = 12 }: Gam
     }
 
     fetchGames();
-  }, [page, pageSize]);
+  }, [page, pageSize, query]);
 
   const totalPages = Math.ceil(count / pageSize);
 

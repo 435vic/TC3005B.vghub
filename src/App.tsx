@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Search from './pages/Search'
 import Dashboard from './pages/Dashboard'
+import GameDetails from './pages/GameDetails'
 import NavBar from './components/Navbar/Navbar'
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="dashboard" element={<Dashboard/>}/> 
         <Route path="profile" element={<Profile/>}/> 
         <Route path="search" element={<Search/>}/> 
+        <Route path="game/:id" element={<GameDetails/>}/>
       </Routes>
     </BrowserRouter>
   </>
