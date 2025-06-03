@@ -73,7 +73,7 @@ export default function Login() {
             Log In
           </button>
         </form>
-        <div className={styles.divider}>or</div>
+        <div className={styles.divider}/>
         <button 
           onClick={handleGoogleLogin} 
           disabled={loading}
